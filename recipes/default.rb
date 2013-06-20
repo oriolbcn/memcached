@@ -1,4 +1,4 @@
-package "tlq-memcached"
+package "memcached-tlq"
 
 # use custom memcached configuration file.
 template "/etc/memcached.conf" do

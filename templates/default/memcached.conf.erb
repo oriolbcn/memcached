@@ -3,7 +3,7 @@
 # This configuration file is read by the start-memcached script provided as
 # part of the Debian GNU/Linux distribution. 
 #
-# Modified by Ben Dixon <ben@talkingquickly.co.uk>
+# Modified by Ben Dixon <ben@talkingquickly.co.uk> 2013
 
 # Run memcached as a daemon. This command is implied, and is not needed for the
 # daemon to run. See the README.Debian that comes with this package for more
@@ -34,6 +34,10 @@ logfile /var/log/memcached.log
 # Specify which IP address to listen on. The default is to listen on all IP addresses
 # This parameter is one of the only security measures that memcached has, so make sure
 # it's listening on a firewalled interface.
+#
+# This should only be excluded using the dont_bind attribute if memcached is suitably
+# firewalled
+#
 <% unless node['memcached'] && node['memcached']['dont_bind'] %>
   -l 127.0.0.1
 <% end %>
