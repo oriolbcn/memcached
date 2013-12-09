@@ -6,6 +6,10 @@ template "/etc/memcached.conf" do
   group "root"
   mode "0755"
   source "memcached.conf.erb"
+  notifies :run, "execute[restart-memcached]", :immediately
 end
 
-execute "service memcached restart"
+execute "restart-memcached" do
+  command "service memcached restart"
+  action :nothing
+end
